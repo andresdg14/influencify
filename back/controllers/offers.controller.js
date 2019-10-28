@@ -1,4 +1,4 @@
-const OfferModel = require('../models/offer.model');
+const OfferModel = require('../models/offers.model');
 
 module.exports = {
   getAllOffers,

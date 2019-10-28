@@ -5,20 +5,26 @@ const offerSchema = new mongoose.Schema({
     type: String,
     required: [true, 'The offer must have a name']
   },
+
   business: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'business',
   }],
+
   categories : {
     type: Array,
   },
+
   timesUsed: {
     type: Number,
+    default: 0
   },
+
   createdAt: {
     type: Number,
     default: Date.now() // Get a timestamp :)
   }
+  
 })
 
 const offerModel = mongoose.model('offer', offerSchema)

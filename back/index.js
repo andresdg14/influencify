@@ -48,12 +48,8 @@ mongoose.connect(config.mongoURL + config.mongoDBName, {
 })
 
 // ROUTING
-const apiRouter = require('./routes')
+const apiRouter = require('./routes/index.router')
 app.use('/api', apiRouter)
-
-app.get('/api/whoami', authenticate, (req, res) => {
-  res.send(`jalou! ${res.locals.user.name}`)
-})
 
 // Init server
 app.listen(config.port, (err) => {

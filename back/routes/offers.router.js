@@ -6,11 +6,11 @@ const {
   deleteOfferById,
   createOffer,
   updateOffer
-} = require('../controlers/offers.controller');
+} = require('../controllers/offers.controller');
 
 router.get('/', getAllOffers);
 router.get('/:id', getOfferById);
-router.delete('/:id', deleteOfferById)
+router.delete('/:id', deleteOfferById);
 router.post('/', createOffer);
 router.put('/:id', updateOffer)
 

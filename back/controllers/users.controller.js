@@ -5,14 +5,15 @@ module.exports = {
   getUserById,
   deleteUserById,
   createUser,
-  updateUser
+  updateUser,
+  getFavOffersById,
+  getUsedOffersById
 };
 
 function getAllUsers(req, res) {
   UserModel.find()
     .then(response => res.json(response))
     .catch((err) => handdleError(err, res))
-
 }
 
 function getUserById(req, res) {
@@ -41,6 +42,25 @@ function updateUser(req, res) {
     })
     .then(response => res.json(response))
     .catch((err) => handdleError(err, res))
+}
+
+function getFavOffersById(req, res) {
+  UserModel.findById(req.params.id)
+  populate('offer')
+  .then((user) => {
+    console.log(user.favOffers)
+  })
+  .catch((err) => handdleError(err, res))
+}
+
+function getUsedOffersById(req, res) {
+  UserModel.findById(req.params.id)
+  populate('offer')
+    .then((user) => {
+      console.log(user.usedOffers)
+    })
+    .catch((err) => handdleError(err, res))
+
 }
 
 function handdleError(err, res) {

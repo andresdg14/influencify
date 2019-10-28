@@ -6,7 +6,7 @@ const {
   deleteInfluencerById,
   createInfluencer,
   updateInfluencer
-} = require('../controlers/influencers.controller');
+} = require('../controllers/influencers.controller');
 
 router.get('/', getAllInfluencers);
 router.get('/:id', getInfluencerById);

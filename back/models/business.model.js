@@ -5,10 +5,12 @@ const businessSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Name is required']
   },
+
   createdAt: {
     type: Number,
     default: Date.now() // Get a timestamp :)
   }
+  
 })
 
 const businessModel = mongoose.model('business', businessSchema)
