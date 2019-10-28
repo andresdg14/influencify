@@ -1,0 +1,23 @@
+{
+  "name": "influencify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andresdg14/influencify.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andresdg14/influencify/issues"
+  },
+  "homepage": "https://github.com/andresdg14/influencify#readme",
+  "dependencies": {
+    "mongodb": "^3.3.3"
+  }
+}

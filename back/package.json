@@ -1,0 +1,9 @@
+{
+  "name": "reboot-back-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon index.js",
+    "prod": "NODE_ENV=production nodemon index.js"
+},
