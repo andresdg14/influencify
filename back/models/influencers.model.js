@@ -26,7 +26,7 @@ const InfluencerSchema = new Mongoose.Schema({
   },
   followers: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'user',
+    ref: 'user'
   }],
   offers: [{
     type: mongoose.Schema.Types.ObjectId,
