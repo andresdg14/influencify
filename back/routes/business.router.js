@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const authenticate = require('../services/authentication')
 
 const {
   getAllBusiness,
@@ -8,10 +9,10 @@ const {
   updateBusiness
 } = require('../controllers/business.controller');
 
-router.get('/', getAllBusiness);
-router.get('/:id', getBusinessById);
-router.delete('/:id', deleteBusinessById)
-router.post('/', createBusiness);
-router.put('/:id', updateBusiness);
+router.get('/', authenticate, getAllBusiness);
+router.get('/:id', authenticate, getBusinessById);
+router.delete('/:id', authenticate, deleteBusinessById)
+router.post('/', authenticate, createBusiness);
+router.put('/:id', authenticate, updateBusiness);
 
 module.exports = router;

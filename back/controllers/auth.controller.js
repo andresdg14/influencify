@@ -9,10 +9,11 @@ module.exports = {
 };
 
 function signup(req, res) {
-  const hashed_pwd = bcrypt.hashSync(req.body.user_password, 10);
+  const hashed_pwd = bcrypt.hashSync(req.body.password, 10);
   UserModel.create({
-      name: req.body.user_name,
-      email: req.body.user_email,
+      username: req.body.username,
+      name: req.body.name,
+      email: req.body.email,
       password: hashed_pwd
     })
     .then(() => {
@@ -26,7 +27,7 @@ function signup(req, res) {
 function login(req, res) {
   UserModel
     .findOne({
-      email: req.body.user_email
+      email: req.body.email
     })
     .then(user => {
       if (!user) {
@@ -35,15 +36,15 @@ function login(req, res) {
         })
       }
 
-      bcrypt.compare(req.body.user_password, user.password, (err, result) => {
+      bcrypt.compare(req.body.password, user.password, (err, result) => {
         if (!result) {
           return res.json({
-            error: `wrong password for ${req.body.user_email}`
+            error: `wrong password for ${req.body.email}`
           })
         }
 
         const user_data = {
-          username: req.body.name,
+          username: req.body.username,
           email: req.body.email
         };
 
@@ -51,7 +52,7 @@ function login(req, res) {
           user_data,
           "secret", // TODO SECRET MORE SECRET PLEASE
           {
-            expiresIn: "1h"
+            expiresIn: "3h"
           }
         );
 

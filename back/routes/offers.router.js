@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const authenticate = require('../services/authentication')
 
 const {
   getAllOffers,
@@ -10,8 +11,8 @@ const {
 
 router.get('/', getAllOffers);
 router.get('/:id', getOfferById);
-router.delete('/:id', deleteOfferById);
-router.post('/', createOffer);
-router.put('/:id', updateOffer)
+router.delete('/:id', authenticate, deleteOfferById);
+router.post('/', authenticate, createOffer);
+router.put('/:id', authenticate, updateOffer)
 
 module.exports = router;

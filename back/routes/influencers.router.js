@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const authenticate = require('../services/authentication')
 
 const {
   getAllInfluencers,
@@ -10,8 +11,8 @@ const {
 
 router.get('/', getAllInfluencers);
 router.get('/:id', getInfluencerById);
-router.delete('/:id', deleteInfluencerById)
-router.post('/', createInfluencer);
-router.put('/:id', updateInfluencer)
+router.delete('/:id', authenticate, deleteInfluencerById)
+router.post('/', authenticate, createInfluencer);
+router.put('/:id', authenticate, updateInfluencer)
 
 module.exports = router;
