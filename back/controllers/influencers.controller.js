@@ -14,7 +14,6 @@ function getAllInfluencers(req, res) {
   InfluencerModel.find()
     .then(response => res.json(response))
     .catch((err) => handdleError(err, res))
-
 }
 
 function getInfluencerById(req, res) {
