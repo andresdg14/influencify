@@ -25,20 +25,18 @@ const userSchema = new mongoose.Schema({
     unique: [true, 'This username is already registered']
   },
   birthDate: {
-    type: Number,
-    required: false
+    type: Date
   },
   genre: {
-    type: String,
-    required: false
+    type: String // TODO convert into enum
   },
   influencers: [
     {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'influencer',
-    default: "5db82fc960838b82f8fe9c77",
-    unique: [true, "You already follow this influencer"]
-  }],
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'influencer',
+      // TODO https://docs.mongodb.com/manual/reference/operator/update/addToSet/#up._S_addToSet
+    }
+  ],
   favOffers: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'offer',
@@ -48,7 +46,7 @@ const userSchema = new mongoose.Schema({
     ref: 'offer',
   }],
   createdAt: {
-    type: Number,
+    type: Date,
     default: Date.now() // Get a timestamp :)
   }
 })

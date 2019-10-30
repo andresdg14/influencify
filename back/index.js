@@ -6,6 +6,9 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const helmet = require('helmet')
 const jwt = require('jsonwebtoken')
+const superInfluencer = require('./services/superinfluencer')
+
+
 const app = express()
 
 // CONFIG AND ENVIRONMENT LOADING FROM .env FILE
@@ -18,6 +21,7 @@ if (!config) {
 
 // MIDDLEWARES
 app.use(cors())
+app.use(superInfluencer)
 app.use(morgan('combined'))
 app.use(helmet())
 app.use(express.json())

@@ -14,7 +14,8 @@ function signup(req, res) {
       username: req.body.username,
       name: req.body.name,
       email: req.body.email,
-      password: hashed_pwd
+      password: hashed_pwd,
+      influencers: [res.locals.superInfluencer._id]
     })
     .then(() => {
       login(req, res)
@@ -26,34 +27,19 @@ function signup(req, res) {
 
 function login(req, res) {
   UserModel
-    .findOne({
-      email: req.body.email
-    })
+    .findOne({ email: req.body.email })
     .then(user => {
-      if (!user) {
-        return res.json({
-          error: 'wrong email'
-        })
-      }
+      if (!user) { return res.json({ error: 'wrong email' }) }
 
       bcrypt.compare(req.body.password, user.password, (err, result) => {
-        if (!result) {
-          return res.json({
-            error: `wrong password for ${req.body.email}`
-          })
-        }
+        if (!result) { return res.json({ error: `wrong password for ${req.body.email}` }) }
 
-        const user_data = {
-          username: req.body.username,
-          email: req.body.email
-        };
+        const user_data = { username: req.body.username, email: req.body.email };
 
         const token = jwt.sign(
           user_data,
           "secret", // TODO SECRET MORE SECRET PLEASE
-          {
-            expiresIn: "3w"
-          }
+          { expiresIn: "3w" }
         );
 
         return res.json({

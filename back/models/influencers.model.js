@@ -59,10 +59,10 @@ const influencerSchema = new mongoose.Schema({
   },
 
   createdAt: {
-    type: Number,
+    type: Date,
     default: Date.now() // Get a timestamp :)
   }
-  
+
 })
 
 const influencerModel = mongoose.model('influencer', influencerSchema)
