@@ -1,3 +1,5 @@
+process.stdout.write('\033c');
+
 const cors = require('cors')
 const express = require('express')
 const mongoose = require('mongoose')
@@ -24,12 +26,14 @@ app.use(express.urlencoded({extended: false}))
 
 // NONGOOSE
 mongoose.connect(config.mongoURL + config.mongoDBName, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
 }, (err) => {
   if (err) {
     throw new Error(err)
   }
-  console.info('💾 Mongoose is connected')
+  console.info('💾  Mongoose is connected')
 })
 
 // ROUTING
@@ -41,8 +45,8 @@ app.listen(config.port, (err) => {
   if (err) {
     throw new Error(err)
   }
-  console.info('\n\n' + '>'.repeat(40))
+  console.info('\n' + '>'.repeat(40))
   console.info('💻  Reboot Server Live')
   console.info(`📡  PORT: http://localhost:${config.port}`)
-  console.info('>'.repeat(40) + '\n\n')
+  console.info('>'.repeat(40) + '\n')
 })
