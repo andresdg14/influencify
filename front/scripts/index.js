@@ -1,10 +1,12 @@
-(function authenticated () {
+function authenticated () {
   if (localStorage.getItem('token')) {
-    console.log('user authenticated')
+    document.getElementById('home').style.display = ''
+    document.getElementById('auth').style.display = 'none'
   } else {
-    console.log('user not authenticated')
+    document.getElementById('home').style.display = 'none'
+    document.getElementById('auth').style.display = ''
   }
-})()
+}
 
 const api = axios.create({
   baseURL: "http://localhost:2222/api/",
@@ -33,7 +35,6 @@ document.getElementById('btn-signup').addEventListener('click', (event) => {
 })
 
 document.getElementById('btn-login').addEventListener('click', (event) => {
-  console.log('loggggiinnnnn')
 
   const newUser = {
     email:    document.getElementById("login_email").value,
@@ -43,11 +44,16 @@ document.getElementById('btn-login').addEventListener('click', (event) => {
   api
     .post("auth/login", newUser)
     .then(function (response) {
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("name", response.data.name);
-      localStorage.setItem("username", response.data.username);
-      localStorage.setItem("email", response.data.email);
-      console.log(response.data)
+      if( response.data.error ) {
+        alert("YOSSS HACKER SAL DE AQUI")
+      } else {
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("name", response.data.name);
+        localStorage.setItem("username", response.data.username);
+        localStorage.setItem("email", response.data.email);
+        console.log(response.data);
+        authenticated()
+      }
     })
     .catch(function (error) {
       console.log(error.response);
@@ -64,3 +70,5 @@ document.getElementById('btn-api').addEventListener('click', (event) => {
       console.log(error.response);
     });
 })
+
+authenticated();
