@@ -5,7 +5,9 @@ module.exports = {
   getInfluencerById,
   deleteInfluencerById,
   createInfluencer,
-  updateInfluencer
+  updateInfluencer,
+  addFollower,
+  addOffer
 };
 
 function getAllInfluencers(req, res) {
@@ -41,6 +43,24 @@ function updateInfluencer(req, res) {
     })
     .then(response => res.json(response))
     .catch((err) => handdleError(err, res))
+}
+
+function addFollower(me, follower) {
+  return InfluencerModel.findById(me)
+    .then((influencer) => {
+      influencer.followers.push(follower)
+      return influencer.save();
+    })
+    .catch((err) => console.log(err))
+}
+
+function addOffer(me, offer) {
+  return InfluencerModel.findById(me)
+  .then((influencer) => {
+    influencer.offers.push(offer)
+    return influencer.save();
+  })
+  .catch((err) => console.log(err))
 }
 
 function handdleError(err, res) {

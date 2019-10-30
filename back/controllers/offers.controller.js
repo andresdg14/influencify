@@ -1,5 +1,9 @@
 const OfferModel = require('../models/offers.model');
 
+const {
+  addOffer
+} = require('./influencers.controller')
+
 module.exports = {
   getAllOffers,
   getOfferById,
@@ -29,8 +33,11 @@ function deleteOfferById(req, res) {
 }
 
 function createOffer(req, res) {
-  OfferModel.create(req.body)
-    .then(response => res.json(response))
+  return OfferModel.create(req.body)
+    .then((newOffer) => addOffer(req.body.influencer,newOffer._id)
+        .then(newInfluencer => newOffer)
+    )
+    .then(newOffer => res.json(newOffer))
     .catch((err) => handdleError(err, res))
 }
 

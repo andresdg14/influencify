@@ -7,12 +7,17 @@
   <title>Reboot API Front</title>
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/bootstrap.css">
 </head>
 <body>
   <h1>Welcome to Reboot Academy</h1>
   <div id="register">
     <label for="user_name">Name:</label>
     <input type="text" id="user_name" name="user_name">
+
+    <label for="user_username">Username:</label>
+    <input type="text" id="user_username" name="user_username">
 
     <label for="user_email">Email:</label>
     <input type="text" id="user_email" name="user_email">
@@ -36,5 +41,6 @@
   <button id="btn-api">Call API WITH TOKEN</button>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
   <script src="scripts/index.js"></script>
+  <script src="scripts/bootstrap.min.js"></script>
 </body>
 </html>

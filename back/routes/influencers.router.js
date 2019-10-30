@@ -6,13 +6,13 @@ const {
   getInfluencerById,
   deleteInfluencerById,
   createInfluencer,
-  updateInfluencer
+  updateInfluencer,
 } = require('../controllers/influencers.controller');
 
 router.get('/', getAllInfluencers);
 router.get('/:id', getInfluencerById);
 router.delete('/:id', authenticate, deleteInfluencerById)
 router.post('/', authenticate, createInfluencer);
-router.put('/:id', authenticate, updateInfluencer)
+router.put('/:id', authenticate, updateInfluencer);
 
 module.exports = router;

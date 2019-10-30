@@ -1,5 +1,7 @@
 const UserModel = require('../models/users.model');
-
+const {
+  addFollower
+} = require('./influencers.controller')
 module.exports = {
   getAllUsers,
   getUserById,
@@ -7,7 +9,10 @@ module.exports = {
   createUser,
   updateUser,
   getFavOffersById,
-  getUsedOffersById
+  getUsedOffersById,
+  addFavOfferByUserId,
+  addUsedOfferByUserId,
+  addInfluencerByUserId
 };
 
 function getAllUsers(req, res) {
@@ -62,6 +67,50 @@ function getUsedOffersById(req, res) {
     .catch((err) => handdleError(err, res))
 
 }
+
+function addFavOfferByUserId(req, res) {
+  UserModel.findById(req.params.id)
+  .then((user) => {
+    user.favOffers.push(req.params.favId)
+    user.save()
+    .then(() => res.json({
+      msg: "Guardado como favorito"
+    }))
+    .catch((err) => handdleError(err, res))
+
+  }).catch((err) => handdleError(err, res))
+}
+
+function addUsedOfferByUserId(req, res) {
+  UserModel.findById(req.params.id)
+    .then((user) => {
+      user.usedOffers.push(req.params.offerId)
+      user.save()
+        .then(() => res.json({
+          msg: "Esta oferta se ha usado"
+        }))
+        .catch((err) => handdleError(err, res))
+
+    }).catch((err) => handdleError(err, res))
+  }
+  
+  function addInfluencerByUserId(req, res) {
+    UserModel.findById(req.params.id)
+      .then((user) => {
+        user.influencers.push(req.params.infId)
+        user.save()
+          .then(() => {
+            addFollower(req.params.infId, req.params.id)
+              .then(() => {
+                res.json({
+                  msg: "Has comenzado a seguir al influencer"
+                });
+              })
+              .catch((err) => handdleError(err, res))
+          })
+          .catch((err) => handdleError(err, res))
+      }).catch((err) => handdleError(err, res))
+  }
 
 function handdleError(err, res) {
   return res.status(400).json(err);

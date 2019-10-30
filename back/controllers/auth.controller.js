@@ -52,7 +52,7 @@ function login(req, res) {
           user_data,
           "secret", // TODO SECRET MORE SECRET PLEASE
           {
-            expiresIn: "3h"
+            expiresIn: "3w"
           }
         );
 

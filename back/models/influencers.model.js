@@ -23,10 +23,10 @@ const influencerSchema = new mongoose.Schema({
     unique: [true, 'This email is already registered']
   },
 
-  password: {
-    type: String,
-    required: true
-  },
+  // password: {
+  //   type: String,
+  //   required: true
+  // },
 
   followers: [{
     type: mongoose.Schema.Types.ObjectId,

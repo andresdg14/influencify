@@ -32,9 +32,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false
   },
-  influencers: [{
+  influencers: [
+    {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'influencer',
+    default: "5db82fc960838b82f8fe9c77",
+    unique: [true, "You already follow this influencer"]
   }],
   favOffers: [{
     type: mongoose.Schema.Types.ObjectId,
