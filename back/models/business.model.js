@@ -6,6 +6,10 @@ const businessSchema = new mongoose.Schema({
     required: [true, 'Name is required']
   },
 
+  businessImg: {
+    type: String
+  },
+
   createdAt: {
     type: Number,
     default: Date.now() // Get a timestamp :)

@@ -4,11 +4,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Reboot API Front</title>
+  <title>Infleuncify</title>
   <link rel="stylesheet" href="styles/bootstrap.css">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-  <h1>Welcome to Reboot Academy</h1>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><img src="img/logo-white150x35.png" alt="" class="d-inline-block align-top"></a>
+    <button class="navbar-toggler" 
+            type="button" 
+            data-toggle="collapse" 
+            data-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Coupons</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Influencers</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">My Profile</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-right">
+        <li class="nav-link" id="signup-link">
+          <a href="index.html">Sign Up</a>
+        </li>
+        <li class="nav-link" id="login-link">
+          <a href="index.html">Login</a>
+        </li>
+        <li class="nav-link" id="logout-link">
+          <a href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="content">
+
+  <!-- Authentication -->
   <div id="auth" style="display:none">
     <div id="register">
       <label for="user_name">Name:</label>
@@ -39,11 +84,40 @@
     <button id="btn-api">Call API WITH TOKEN</button>
   </div>
 
+  <!-- Home -->
   <div id="home" style="display:none">
-    <h2>Sweeett hommmee allaabammaa!!!</h2>
-    <ul id="influencers-home">
-      <li></li>
-    </ul>
+
+    <!-- My profile info -->
+    <div id="myprofile">
+      <img src="img/profile/128.jpg" alt="avatar" id="profileimg" class="rounded-circle">
+      <p id="username"></p>
+    </div>
+    
+    <!-- My coupons info -->
+    <div id="mycoupons">
+      <h2>Mis Cupones</h2>
+      <div class="mycoupon">
+        <div class="offer-company">
+          <img src="img/companies/1.png" class="companyimg" alt="company">
+        </div>
+        <img src="img/influencers/2.jpg" alt="influencer" class="rounded-circle offer-influencer">
+        <h3 class="coupontitle">Mi cupón</h3>
+        <p class="coupondescription">Descripción del cupón</p>
+      </div>
+    </div>
+    
+    <!-- My influencers info -->
+    <div id="myinfluencers">
+      <h2>Siguiendo</h2>
+      <div class="myinfluencer">       
+        <ul id="influencers-home">
+        </ul>
+        <img src="img/influencers/2.jpg" alt="influencer" class="rounded-circle">
+        <h3 class="influencername">Influencer Name</h3>
+      </div>
+    </div>
+  </div>
+
   </div>
 
   <a href="test.html" style="margin-top:50px">Go to test page</a>

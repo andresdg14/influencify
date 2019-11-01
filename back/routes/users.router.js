@@ -21,8 +21,8 @@ router.post('/:id/fav/:favId', addFavOfferByUserId);
 router.post('/:id/offer/:offerId', addUsedOfferByUserId);
 router.post('/:id/follow/:infId', addInfluencerByUserId);
 router.put('/:id', updateUser);
-router.get('/:id', getFavOffersById);
-router.get('/:id', getUsedOffersById)
+router.get('/:id/favoffers', getFavOffersById);
+router.get('/:id/usedoffers', getUsedOffersById)
 
 
 module.exports = router;

@@ -21,6 +21,7 @@ function getAllOffers(req, res) {
 
 function getOfferById(req, res) {
   OfferModel.findById(req.params.id)
+    .populate('influencer')
     .then(response => res.json(response))
     .catch((err) => handdleError(err, res))
 }

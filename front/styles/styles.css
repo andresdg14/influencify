@@ -1,5 +1,9 @@
+/* #content {
+  padding:16px;
+} */
+
 body {
-  padding: 10px;
+  background-color: #13c1ac;
 }
 
 label, button {
@@ -14,3 +18,61 @@ input {
   display: inline-block;
   vertical-align: top;
 }
+
+.bg-light {
+  background-color: #13c1ac !important;
+}
+
+#myprofile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#profileimg {
+  width: 25%;
+  margin: 16px;
+}
+
+#username {
+  font-size: 1.4em;
+  margin-bottom: 25px;
+  color:white;
+}
+
+.offer-company{
+  display: inline-block;
+  position: relative;
+}
+
+.companyimg{
+  max-width: 20vh;
+  border: #13c1ac solid 1px;
+  border-radius: 15px;
+}
+
+div.offer-company + img{
+  width: 25%;
+  /* position: absolute;
+  bottom: 1px;
+  right: 5px; */
+  border: 2px;
+  border-style: solid;
+  border-color: #13c1ac;
+}
+
+.mycoupon {
+  position: relative;
+  display: inline-block;
+}
+
+#mycoupons, #myinfluencers {
+  border-radius: 50px 50px 0 0;
+  margin-top: -20px;
+  background-color: white;
+  padding: 25px;
+  -webkit-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.25);
+  -moz-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.25);
+  box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.25);
+}
+

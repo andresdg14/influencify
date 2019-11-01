@@ -38,6 +38,10 @@ const influencerSchema = new mongoose.Schema({
     ref: 'offer'
   }],
 
+  profileImg: {
+    type: String
+  },
+
   facebookURL: {
     type: String,
     required: false

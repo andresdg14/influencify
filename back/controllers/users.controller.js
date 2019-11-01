@@ -23,6 +23,8 @@ function getAllUsers(req, res) {
 
 function getUserById(req, res) {
   UserModel.findById(req.params.id)
+  .populate('influencers')
+  .populate('favOffers')
     .then(response => res.json(response))
     .catch((err) => handdleError(err, res))
 }
@@ -51,7 +53,7 @@ function updateUser(req, res) {
 
 function getFavOffersById(req, res) {
   UserModel.findById(req.params.id)
-  populate('offer')
+  .populate('offers')
   .then((user) => {
     console.log(user.favOffers)
   })
@@ -60,12 +62,9 @@ function getFavOffersById(req, res) {
 
 function getUsedOffersById(req, res) {
   UserModel.findById(req.params.id)
-  populate('offer')
-    .then((user) => {
-      console.log(user.usedOffers)
-    })
-    .catch((err) => handdleError(err, res))
-
+  .populate('offers')
+  .then((user) => res.json(user.usedOffers))
+  .catch((err) => handdleError(err, res))
 }
 
 function addFavOfferByUserId(req, res) {
@@ -94,23 +93,29 @@ function addUsedOfferByUserId(req, res) {
     }).catch((err) => handdleError(err, res))
   }
   
-  function addInfluencerByUserId(req, res) {
-    UserModel.findById(req.params.id)
-      .then((user) => {
-        user.influencers.push(req.params.infId)
-        user.save()
-          .then(() => {
-            addFollower(req.params.infId, req.params.id)
-              .then(() => {
-                res.json({
-                  msg: "Has comenzado a seguir al influencer"
-                });
-              })
-              .catch((err) => handdleError(err, res))
-          })
-          .catch((err) => handdleError(err, res))
-      }).catch((err) => handdleError(err, res))
-  }
+function addInfluencerByUserId(req, res) {
+  UserModel.findById(req.params.id)
+    .then((user) => {
+      user.influencers.push(req.params.infId)
+      user.save()
+        .then(() => {
+          addFollower(req.params.infId, req.params.id)
+            .then(() => {
+              res.json({
+                msg: "Has comenzado a seguir al influencer"
+              });
+            })
+            .catch((err) => handdleError(err, res))
+        })
+        .catch((err) => handdleError(err, res))
+    }).catch((err) => handdleError(err, res))
+}
+
+// function addInfluencerByUserId(req, res) {
+//   UserModel.findOneAndUpdate(req.params.id, {$addtoset: {influencers: req.params.infId}})
+//   .then(response => res.json(response))
+//   .catch((err) => handdleError(err, res))
+// }
 
 function handdleError(err, res) {
   return res.status(400).json(err);

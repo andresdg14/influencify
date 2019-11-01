@@ -28,7 +28,8 @@ const userSchema = new mongoose.Schema({
     type: Date
   },
   genre: {
-    type: String // TODO convert into enum
+    type: String,
+    enum: ['Male', 'Female']
   },
   influencers: [
     {
@@ -45,6 +46,11 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'offer',
   }],
+
+  profileImg: {
+    type: String
+  },
+
   createdAt: {
     type: Date,
     default: Date.now() // Get a timestamp :)

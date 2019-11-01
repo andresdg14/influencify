@@ -44,7 +44,8 @@ function login(req, res) {
 
         return res.json({
           token: token,
-          ...user_data
+          ...user_data,
+          _id : user._id
         });
       })
     })

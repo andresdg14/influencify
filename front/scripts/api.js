@@ -2,9 +2,14 @@ function authenticated() {
   if (localStorage.getItem('token')) {
     document.getElementById('home').style.display = ''
     document.getElementById('auth').style.display = 'none'
+    document.getElementById('login-link').style.display = 'none'
+    document.getElementById('signup-link').style.display = 'none'
   } else {
     document.getElementById('home').style.display = 'none'
     document.getElementById('auth').style.display = ''
+    document.getElementById('login-link').style.display = ''
+    document.getElementById('signup-link').style.display = ''
+
   }
 }
 
@@ -21,6 +26,7 @@ const API = {
       localStorage.setItem("name", response.data.name);
       localStorage.setItem("username", response.data.username);
       localStorage.setItem("email", response.data.email);
+      localStorage.setItem("id", response.data._id);
     })
     .catch(function (error) {
       console.log(error.response);
@@ -36,6 +42,7 @@ const API = {
         localStorage.setItem("name", response.data.name);
         localStorage.setItem("username", response.data.username);
         localStorage.setItem("email", response.data.email);
+        localStorage.setItem("id", response.data._id);
         console.log(response.data);
         authenticated()
       }
@@ -44,16 +51,62 @@ const API = {
       console.log(error.response);
     });
   },
+
   getMyInfluencers: function(){
     return api
-      .get("users", { headers: { token: localStorage.getItem("token") } })
+      .get(`users/${localStorage.getItem("id")}`, { headers: { token: localStorage.getItem("token") } })
+      .then(function (response) {
+        return response.data.influencers
+      })
+      .catch(function (error) {
+        console.log(error.response);
+      });
+  },
+  getMyFavOffers: function () {
+    return api
+      .get(`users/${localStorage.getItem("id")}`, {
+        headers: {
+          token: localStorage.getItem("token")
+        }
+      })
+      .then(function (response) {
+        return response.data.favOffers
+      })
+      .catch(function (error) {
+        console.log(error.response);
+      });
+  },
+
+  getAllInfluencers: function () {
+    return api
+      .get("influencers", {
+        headers: {
+          token: localStorage.getItem("token")
+        }
+      })
       .then(function (response) {
         return response.data
       })
       .catch(function (error) {
         console.log(error.response);
       });
+  },
+
+  followInfluencerByUserId: function (influencerId) {
+    return api
+      .post(`users/${localStorage.getItem("id")}/follow/${influencerId}`, {}, {
+        headers: {
+          token: localStorage.getItem("token")
+        }
+      })
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error.response);
+      })
   }
+
 }
 
 
