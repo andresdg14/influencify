@@ -6,126 +6,70 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Infleuncify</title>
   <link rel="stylesheet" href="styles/bootstrap.css">
-  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"><img src="img/logo-white150x35.png" alt="" class="d-inline-block align-top"></a>
-    <button class="navbar-toggler" 
-            type="button" 
-            data-toggle="collapse" 
-            data-target="#navbarSupportedContent" 
-            aria-controls="navbarSupportedContent" 
-            aria-expanded="false" 
-            aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Coupons</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">Influencers</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">My Profile</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-right">
-        <li class="nav-link" id="signup-link">
-          <a href="index.html">Sign Up</a>
-        </li>
-        <li class="nav-link" id="login-link">
-          <a href="index.html">Login</a>
-        </li>
-        <li class="nav-link" id="logout-link">
-          <a href="#">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
 
   <div id="content">
 
+    <img src="img/logo-white500x120.png" alt="Infleuncify Logo" class="img-fluid">
+
+
   <!-- Authentication -->
-  <div id="auth" style="display:none">
-    <div id="register">
-      <label for="user_name">Name:</label>
-      <input type="text" id="user_name" name="user_name">
+  <div id="auth">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a href="#nav-register" class="nav-item nav-link active" id="nav-register-tab" data-toggle="tab" role="tab" aria-controls="nav-register" aria-selected="true">Register</a>
+        <a href="#nav-login" class="nav-item nav-link" id="nav-login-tab" data-toggle="tab" role="tab" aria-controls="nav-login" aria-selected="false">Login</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
 
-      <label for="user_username">Username:</label>
-      <input type="text" id="user_username" name="user_username">
+        <div id="register">
 
-      <label for="user_email">Email:</label>
-      <input type="text" id="user_email" name="user_email">
+          <div class="field">
+            <input type="text" id="user_name" name="user_name" required autofocus>
+            <label for="user_name">Name:</label>
+          </div>
+  
+          <div class="field">
+            <input type="text" id="user_username" name="user_username" required>
+            <label for="user_username">Username:</label>
+          </div>
+  
+          <div class="field">
+            <input type="text" id="user_email" name="user_email" required>
+            <label for="user_email">Email:</label>
+          </div>
 
-      <label for="user_password">Password:</label>
-      <input type="password" id="user_password" name="user_password">
-
-      <button id="btn-signup">SIGN-UP</button>
-    </div>
-
-    <div id="login">
-      <label for="login_email">Email:</label>
-      <input type="text" id="login_email" name="login_email">
-
-      <label for="login_password">Password:</label>
-      <input type="password" id="login_password" name="login_password">
-
-      <button id="btn-login">LOGIN</button>
-    </div>
-
-    <button id="btn-api">Call API WITH TOKEN</button>
-  </div>
-
-  <!-- Home -->
-  <div id="home" style="display:none">
-
-    <!-- My profile info -->
-    <div id="myprofile">
-      <img src="img/profile/128.jpg" alt="avatar" id="profileimg" class="rounded-circle">
-      <p id="username"></p>
-    </div>
-    
-    <!-- My coupons info -->
-    <div id="mycoupons">
-      <h2>Mis Cupones</h2>
-      <div class="mycoupon">
-        <div class="offer-company">
-          <img src="img/companies/1.png" class="companyimg" alt="company">
+          <div class="field">
+            <input type="password" id="user_password" name="user_password" required>
+            <label for="user_password">Password:</label>
+          </div>
+  
+          <button id="btn-signup">SIGN-UP</button>
         </div>
-        <img src="img/influencers/2.jpg" alt="influencer" class="rounded-circle offer-influencer">
-        <h3 class="coupontitle">Mi cupón</h3>
-        <p class="coupondescription">Descripción del cupón</p>
       </div>
-    </div>
+      
+      <div class="tab-pane fade" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
+        <div id="login">
+          <label for="login_email">Email:</label>
+          <input type="text" id="login_email" name="login_email">
     
-    <!-- My influencers info -->
-    <div id="myinfluencers">
-      <h2>Siguiendo</h2>
-      <div class="myinfluencer">       
-        <ul id="influencers-home">
-        </ul>
-        <img src="img/influencers/2.jpg" alt="influencer" class="rounded-circle">
-        <h3 class="influencername">Influencer Name</h3>
+          <label for="login_password">Password:</label>
+          <input type="password" id="login_password" name="login_password">
+    
+          <button id="btn-login">LOGIN</button>
+        </div>
       </div>
     </div>
   </div>
-
-  </div>
-
-  <a href="test.html" style="margin-top:50px">Go to test page</a>
+ 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
   <script src="scripts/jquery-3.3.1.slim.min.js"></script>
   <script src="scripts/bootstrap.min.js"></script>
-  <script src="scripts/api.js"></script>
   <script src="scripts/index.js"></script>
 </body>
 </html>

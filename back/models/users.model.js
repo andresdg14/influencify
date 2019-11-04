@@ -13,6 +13,8 @@ const userSchema = new mongoose.Schema({
         return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(value)
       }
     },
+    lowercase: true,
+    trim: true,
     unique: [true, 'This email is already registered']
   },
   password: {
@@ -22,6 +24,9 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
+    lowercase: true,
+    trim: true,
+    minlength: 3,
     unique: [true, 'This username is already registered']
   },
   birthDate: {
@@ -55,7 +60,7 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now() // Get a timestamp :)
   }
-})
+}, { usePushEach: true })
 
 const userModel = mongoose.model('user', userSchema)
 

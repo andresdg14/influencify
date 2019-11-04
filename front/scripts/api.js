@@ -1,15 +1,8 @@
 function authenticated() {
   if (localStorage.getItem('token')) {
     document.getElementById('home').style.display = ''
-    document.getElementById('auth').style.display = 'none'
-    document.getElementById('login-link').style.display = 'none'
-    document.getElementById('signup-link').style.display = 'none'
   } else {
-    document.getElementById('home').style.display = 'none'
-    document.getElementById('auth').style.display = ''
-    document.getElementById('login-link').style.display = ''
-    document.getElementById('signup-link').style.display = ''
-
+    location.href = './index.html'
   }
 }
 
@@ -99,9 +92,7 @@ const API = {
           token: localStorage.getItem("token")
         }
       })
-      .then(function (response) {
-        console.log(response.data);
-      })
+      .then(response => { return response.data })
       .catch(function (error) {
         console.log(error.response);
       })

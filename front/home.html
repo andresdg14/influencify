@@ -5,8 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Home</title>
-  <link rel="stylesheet" href="styles/bootstrap.min.css">
+  <title>Infleuncify</title>
   <link rel="stylesheet" href="styles/bootstrap.css">
   <link rel="stylesheet" href="styles/styles.css">
 </head>
@@ -14,14 +13,9 @@
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Infleuncify</a>
-    <button class="navbar-toggler" 
-            type="button" 
-            data-toggle="collapse" 
-            data-target="#navbarSupportedContent" 
-            aria-controls="navbarSupportedContent" 
-            aria-expanded="false" 
-            aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#"><img src="img/logo-white150x35.png" alt="" class="d-inline-block align-top"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -41,51 +35,58 @@
         </li>
       </ul>
       <ul class="nav navbar-right">
-        <li class="nav-link">
-          <a href="index.html">Sign Up</a>
-        </li>
-        <li class="nav-link">
-          <a href="index.html">Login</a>
+        <li class="nav-link" id="logout-link">
+          <a href="#">Logout</a>
         </li>
       </ul>
     </div>
   </nav>
 
-  <!-- Your little profile info -->
-  <div id="myprofile">
-    <img src="img/profile/128.jpg" alt="avatar" class="rounded-circle" >
-    <p id="username"></p>
-    <p>Número de cupones favoritos</p>
-  </div>
+  <div id="content">
 
-  <!-- My coupons info -->
-  <div id="mycoupons">
-    <h2>Mis Cupones</h2>
-    <div class="mycoupon">
-      <img src="img/companies/1.png" alt="company">
-      <img src="img/influencers/2.jpg" alt="influencer" class="rounded-circle">
-      <h3 class="coupontitle">Mi cupón</h3>
-      <p class="coupondescription">Descripción del cupón</p>
+    <!-- Home -->
+    <div id="home" style="display:none">
+
+      <!-- My profile info -->
+      <div id="myprofile">
+        <img src="img/profile/128.jpg" alt="avatar" id="profileimg" class="rounded-circle">
+        <p id="username"></p>
+      </div>
+
+      <!-- My coupons info -->
+      <div id="mycoupons">
+        <h2>Mis Cupones</h2>
+        <div class="mycoupon">
+          <div class="offer-company">
+            <img src="img/companies/1.png" class="companyimg" alt="company">
+          </div>
+          <img src="img/influencers/2.jpg" alt="influencer" class="rounded-circle offer-influencer">
+          <h3 class="coupontitle">Mi cupón</h3>
+          <p class="coupondescription">Descripción del cupón</p>
+        </div>
+      </div>
+
+      <!-- My influencers info -->
+      <div id="myinfluencers">
+        <h2>Siguiendo</h2>
+        <div class="myinfluencer">
+          <ul id="influencers-home">
+          </ul>
+          <img src="img/influencers/2.jpg" alt="influencer" class="rounded-circle">
+          <h3 class="influencername">Influencer Name</h3>
+        </div>
+      </div>
     </div>
+
   </div>
 
-  <!-- My influencers info -->
-  <div id="myinfluencers">
-    <h2>Siguiendo</h2>
-    <div class="myinfluencer">
-      <img src="img/influencers/2.jpg" alt="influencer" class="rounded-circle">
-      <h3 class="influencername">Influencer Name</h3>
-    </div>
-  </div>
+  <a href="test.html" style="margin-top:50px">Go to test page</a>
 
-  <!-- End of body -->
-  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-  <script src="scripts/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="scripts/jquery-3.3.1.slim.min.js"></script>
   <script src="scripts/bootstrap.min.js"></script>
-  <script src="scripts/index.js"></script>
+  <script src="scripts/api.js"></script>
   <script src="scripts/home.js"></script>
-
 </body>
 
 </html>

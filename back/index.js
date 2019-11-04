@@ -32,7 +32,8 @@ app.use(express.urlencoded({extended: false}))
 mongoose.connect(config.mongoURL + config.mongoDBName, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true
+  useCreateIndex: true,
+  useFindAndModify: false
 }, (err) => {
   if (err) {
     throw new Error(err)
