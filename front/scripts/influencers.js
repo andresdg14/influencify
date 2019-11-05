@@ -1,3 +1,7 @@
+function loadInfluencers() {
+
+}
+
 function reply_click(clicked_id) {
   influencerId = clicked_id;
 
@@ -17,15 +21,12 @@ for (var i = 0; i < followButtons.length; i++) {
   })
 }
 
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  //Listado de influencers que sigue el usuario logueado
-  API.getMyInfluencers().then(influencers => {
+  API.getMyInfluencers()
+    .then(influencers => {
       console.log({
         influencers
       });
-      var ih = document.getElementById('influencers-home')
+      var ih = document.getElementById('my-influencers')
       influencers.forEach(elem => {
         var p = document.createElement('p');
         p.innerHTML = elem.name;
@@ -36,25 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(error.response);
     });
 
-  //Listado de cupones que el usuario ha marcado como favorito
-  API.getMyFavOffers()
-    .then(offers => {
-      console.log({
-        offers
-      });
-      var oh = document.getElementById('offers-home')
-      offers.forEach(elem => {
-        var p = document.createElement('p');
-        p.innerHTML = elem.name;
-        oh.appendChild(p)
-      });
-    })
-    .catch(function (error) {
-      console.log(error.response);
-    })
-
-
-  //Listado de todos los influencers
   API.getAllInfluencers()
     .then(influencers => {
       console.log({
@@ -63,17 +45,12 @@ document.addEventListener("DOMContentLoaded", function () {
       var il = document.getElementById('influencers-list')
       influencers.forEach(elem => {
         var div = document.createElement('div');
-        div.innerHTML = `<span>${elem.name}</span>
-        <button class="followButton btn btn-primary" id="follow-${elem._id}" onClick="reply_click('${elem._id}')">Follow</button>`;
+        div.innerHTML = `<img src="${elem.profileImg}" class="profile-img rounded-circle"><h2>${elem.name}</h2><div><a href="${elem.instagramURL}"><img src="img/instagram125x125.png" class="social-icon"></a><a href="${elem.facebookURL}"><img src="img/facebook125x125.png" class="social-icon"></a><a href="${elem.twitterURL}"><img src="img/twitter125x125.png" class="social-icon"></a></div><div><button class="followButton btn btn-primary" id="follow-${elem._id}" onClick="reply_click('${elem._id}')">Follow</button></div>`
+        div.className="influencer-item"
         il.appendChild(div)
       });
     })
     .catch(function (error) {
       console.log(error.response);
     })
-
-  //Nombre del usuario logueado
-  const p = document.getElementById('username')
-  p.innerHTML = localStorage.getItem("username");
-  authenticated();
-});
+    

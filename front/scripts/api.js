@@ -100,6 +100,15 @@ const API = {
 
 }
 
+document.getElementById('logout-link').addEventListener('click', (event) => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("username");
+  localStorage.removeItem("email");
+  localStorage.removeItem("name");
+  localStorage.removeItem("id");
+  window.location.assign('index.html');
+})
+
 
 
 

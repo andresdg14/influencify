@@ -11,6 +11,7 @@ const {
   addFavOfferByUserId,
   addUsedOfferByUserId,
   addInfluencerByUserId
+  // getFilteredInfluencersList
 } = require('../controllers/users.controller');
 
 router.get('/', getAllUsers);
@@ -23,6 +24,7 @@ router.post('/:id/follow/:infId', addInfluencerByUserId);
 router.put('/:id', updateUser);
 router.get('/:id/favoffers', getFavOffersById);
 router.get('/:id/usedoffers', getUsedOffersById)
+// router.get('/:id/influencerslist', getFilteredInfluencersList)
 
 
 module.exports = router;

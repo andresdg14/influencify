@@ -6,10 +6,52 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Influencity - Influencers List</title>
   <link rel="stylesheet" href="styles/bootstrap.css">
-  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/influencers.css">
 
 </head>
 <body>
-  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><img src="img/logo150x35.png" alt="" class="d-inline-block align-top"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="home.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Offers</a>
+        </li>
+        <li class="nav-item">
+          <a href="influencers.html" class="nav-link">Influencers</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">My Profile</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-right">
+        <li class="nav-link" id="logout-link">
+          <a href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="influencers">
+    <h2>Influencers List</h2>
+
+    <div id="influencers-list">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="scripts/jquery-3.3.1.slim.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/influencers.js"></script>
+
 </body>
 </html>

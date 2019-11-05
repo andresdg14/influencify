@@ -1,0 +1,31 @@
+#influencers {
+  padding: 16px;
+}
+
+.influencer-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.social-icon {
+  max-width: 25px;
+  margin-right: 20px;
+}
+
+.followButton {
+  position: absolute;
+  right: 0;
+  top: 25%;
+  background-color: #13c1ac;
+  border-color: #13c1ac;
+}
+
+.profile-img {
+  float: left;
+  max-width: 80px;
+  margin-right: 15px;
+}
+
+h2 {
+  font-size: 1.3em;
+}

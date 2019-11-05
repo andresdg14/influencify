@@ -1,8 +1,10 @@
 const UserModel = require('../models/users.model');
 
 const {
-  addFollower
+  addFollower,
+  // getAllInfluencers
 } = require('./influencers.controller')
+
 module.exports = {
   getAllUsers,
   getUserById,
@@ -13,7 +15,8 @@ module.exports = {
   getUsedOffersById,
   addFavOfferByUserId,
   addUsedOfferByUserId,
-  addInfluencerByUserId
+  addInfluencerByUserId,
+  // getFilteredInfluencersList
 };
 
 function getAllUsers(req, res) {
@@ -113,6 +116,24 @@ function addInfluencerByUserId(req, res) {
       }
     }).catch((err) => handdleError(err, res))
 }
+
+// function getFilteredInfluencersList(req, res) {
+  // UserModel.findById(req.params.id)
+  //   .then((response) => {
+  //     let userInfluencers = response.influencers
+  //     .then(() => {
+  //       let allInfluencers = getAllInfluencers()
+  //         .then(() => {
+  //           res.json(userInfluencers.filter(e => allInfluencers.includes(e)))
+  //         })
+  //         .catch((err) => handdleError(err, res))
+  //     })
+  //     .catch((err) => handdleError(err, res))
+  //   })
+  //   .catch((err) => handdleError(err, res))
+  // }
+
+
 
 function handdleError(err, res) {
   return res.status(400).json(err);
