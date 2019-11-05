@@ -44,17 +44,49 @@ const API = {
       console.log(error.response);
     });
   },
-
-  getMyInfluencers: function(){
-    return api
-      .get(`users/${localStorage.getItem("id")}`, { headers: { token: localStorage.getItem("token") } })
-      .then(function (response) {
-        return response.data.influencers
-      })
-      .catch(function (error) {
-        console.log(error.response);
-      });
-  },
+getMyInfluencers: function () {
+  return api
+    .get(`users/${localStorage.getItem("id")}`, {
+      headers: {
+        token: localStorage.getItem("token")
+      }
+    })
+    .then(function (response) {
+      return response.data.influencers
+    })
+    .catch(function (error) {
+      console.log(error.response);
+    });
+},
+getMyInfluencersOffers: function () {
+  return api
+    .get(`users/${localStorage.getItem("id")}`, {
+      headers: {
+        token: localStorage.getItem("token")
+      }
+    })
+    .then(function (response) {
+      console.log(response.data.influencers.map(inf => inf.offers))
+      return response.data.influencers.map(inf => inf.offers)
+    })
+    .catch(function (error) {
+      console.log(error.response);
+    });
+},
+getCurrentUserById: function () {
+  return api
+    .get(`users/${localStorage.getItem("id")}`, {
+      headers: {
+        token: localStorage.getItem("token")
+      }
+    })
+    .then(function (response) {
+      return response.data
+    })
+    .catch(function (error) {
+      console.log(error.response);
+    });
+},
   getMyFavOffers: function () {
     return api
       .get(`users/${localStorage.getItem("id")}`, {
@@ -99,7 +131,6 @@ const API = {
         console.log(error.response);
       });
   },
-
   followInfluencerByUserId: function (influencerId) {
     return api
       .post(`users/${localStorage.getItem("id")}/follow/${influencerId}`, {}, {
@@ -107,7 +138,24 @@ const API = {
           token: localStorage.getItem("token")
         }
       })
-      .then(response => { return response.data })
+      .then(response => {
+        return response.data
+      })
+      .catch(function (error) {
+        console.log(error.response);
+      })
+  },
+
+  getInfluencerById: function (influencerId) {
+    return api
+      .get(`influencers/${influencerId}`, {}, {
+        headers: {
+          token: localStorage.getItem("token")
+        }
+      })
+      .then(response => {
+        return response.data
+      })
       .catch(function (error) {
         console.log(error.response);
       })

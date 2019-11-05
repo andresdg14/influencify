@@ -1,14 +1,5 @@
-/* #content {
-  padding:16px;
-} */
-
 body {
   background-color: #13c1ac;
-}
-
-label,
-button {
-  display: block;
 }
 
 .bg-light {
@@ -23,6 +14,7 @@ button {
 
 #profileimg {
   width: 25%;
+  max-width:100px;
   margin: 16px;
 }
 
@@ -32,7 +24,7 @@ button {
   color: white;
 }
 
-.offer-company {
+/* .offer-company {
   display: inline-block;
   position: relative;
 }
@@ -41,13 +33,13 @@ button {
   max-width: 20vh;
   border: #13c1ac solid 1px;
   border-radius: 15px;
-}
+} */
 
-div.offer-company+img {
+/* div.offer-company+img {
   width: 25%;
-  /* position: absolute;
+  position: absolute;
   bottom: 1px;
-  right: 5px; */
+  right: 5px; 
   border: 2px;
   border-style: solid;
   border-color: #13c1ac;
@@ -56,15 +48,39 @@ div.offer-company+img {
 .mycoupon {
   position: relative;
   display: inline-block;
-}
+} */
 
-#mycoupons,
-#myinfluencers {
+#mycoupons, #myinfluencers {
   border-radius: 50px 50px 0 0;
-  margin-top: -20px;
   background-color: white;
   padding: 25px;
-  -webkit-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.25);
-  -moz-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.25);
-  box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.25);
+  -webkit-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
+  -moz-box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
+  box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.15);
+}
+
+#mycoupons {
+  padding-bottom: 50px;
+}
+
+#myinfluencers {
+  margin-top: -40px;
+}
+
+.social-icon {
+  max-width: 25px;
+  margin-right: 20px;
+}
+
+.profile-img {
+  max-width: 80px;
+  margin-right: 15px;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+#mycoupons > h2, #myinfluencers > h2 {
+  color: #13c1ac;
 }

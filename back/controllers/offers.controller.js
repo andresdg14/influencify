@@ -9,7 +9,8 @@ module.exports = {
   getOfferById,
   deleteOfferById,
   createOffer,
-  updateOffer
+  updateOffer,
+  getAvailableOffersByUserId
 };
 
 function getAllOffers(req, res) {
@@ -49,6 +50,10 @@ function updateOffer(req, res) {
     })
     .then(response => res.json(response))
     .catch((err) => handdleError(err, res))
+}
+
+function getAvailableOffersByUserId(req, res) {
+  console.log(req.params.id)
 }
 
 function handdleError(err, res) {

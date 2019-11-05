@@ -27,8 +27,10 @@ function getAllUsers(req, res) {
 
 function getUserById(req, res) {
   UserModel.findById(req.params.id)
-    .populate('influencers')
-    .populate('favOffers')
+    .populate({path: 'influencers',
+    populate: {path: 'offers', model: 'offer', 
+    populate: {path: 'business', model: 'business'}}
+  })
     .then(response => res.json(response))
     .catch((err) => handdleError(err, res))
 }
@@ -138,8 +140,6 @@ function getFilteredInfluencersList(req, res) {
     })
     .catch(err => res.json(err))
 }
-
-
 
 function handdleError(err, res) {
   return res.status(400).json(err);

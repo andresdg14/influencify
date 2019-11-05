@@ -18,6 +18,7 @@ function getAllInfluencers(req, res) {
 
 function getAllInfluencersList() {
   return InfluencerModel.find()
+    .populate('offers')
     .then(influencers => influencers)
 }
 
