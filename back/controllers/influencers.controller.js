@@ -2,6 +2,7 @@ const InfluencerModel = require('../models/influencers.model');
 
 module.exports = {
   getAllInfluencers,
+  getAllInfluencersList,
   getInfluencerById,
   deleteInfluencerById,
   createInfluencer,
@@ -9,11 +10,15 @@ module.exports = {
   addFollower,
   addOffer
 };
-
 function getAllInfluencers(req, res) {
-  InfluencerModel.find()
+  return getAllInfluencersList()
     .then(response => res.json(response))
     .catch((err) => handdleError(err, res))
+}
+
+function getAllInfluencersList() {
+  return InfluencerModel.find()
+    .then(influencers => influencers)
 }
 
 function getInfluencerById(req, res) {

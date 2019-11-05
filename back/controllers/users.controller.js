@@ -2,7 +2,7 @@ const UserModel = require('../models/users.model');
 
 const {
   addFollower,
-  // getAllInfluencers
+  getAllInfluencersList
 } = require('./influencers.controller')
 
 module.exports = {
@@ -16,7 +16,7 @@ module.exports = {
   addFavOfferByUserId,
   addUsedOfferByUserId,
   addInfluencerByUserId,
-  // getFilteredInfluencersList
+  getFilteredInfluencersList
 };
 
 function getAllUsers(req, res) {
@@ -27,8 +27,8 @@ function getAllUsers(req, res) {
 
 function getUserById(req, res) {
   UserModel.findById(req.params.id)
-  .populate('influencers')
-  .populate('favOffers')
+    .populate('influencers')
+    .populate('favOffers')
     .then(response => res.json(response))
     .catch((err) => handdleError(err, res))
 }
@@ -57,31 +57,31 @@ function updateUser(req, res) {
 
 function getFavOffersById(req, res) {
   UserModel.findById(req.params.id)
-  .populate('offers')
-  .then((user) => {
-    console.log(user.favOffers)
-  })
-  .catch((err) => handdleError(err, res))
+    .populate('offers')
+    .then((user) => {
+      console.log(user.favOffers)
+    })
+    .catch((err) => handdleError(err, res))
 }
 
 function getUsedOffersById(req, res) {
   UserModel.findById(req.params.id)
-  .populate('offers')
-  .then((user) => res.json(user.usedOffers))
-  .catch((err) => handdleError(err, res))
+    .populate('offers')
+    .then((user) => res.json(user.usedOffers))
+    .catch((err) => handdleError(err, res))
 }
 
 function addFavOfferByUserId(req, res) {
   UserModel.findById(req.params.id)
-  .then((user) => {
-    user.favOffers.push(req.params.favId)
-    user.save()
-    .then(() => res.json({
-      msg: "Guardado como favorito"
-    }))
-    .catch((err) => handdleError(err, res))
+    .then((user) => {
+      user.favOffers.push(req.params.favId)
+      user.save()
+        .then(() => res.json({
+          msg: "Guardado como favorito"
+        }))
+        .catch((err) => handdleError(err, res))
 
-  }).catch((err) => handdleError(err, res))
+    }).catch((err) => handdleError(err, res))
 }
 
 function addUsedOfferByUserId(req, res) {
@@ -95,12 +95,12 @@ function addUsedOfferByUserId(req, res) {
         .catch((err) => handdleError(err, res))
 
     }).catch((err) => handdleError(err, res))
-  }
-  
+}
+
 function addInfluencerByUserId(req, res) {
   UserModel.findById(req.params.id)
     .then((user) => {
-      if (!user.influencers.includes(req.params.infId)){
+      if (!user.influencers.includes(req.params.infId)) {
         user.influencers.push(req.params.infId);
         user.save()
           .then(() => {
@@ -117,21 +117,27 @@ function addInfluencerByUserId(req, res) {
     }).catch((err) => handdleError(err, res))
 }
 
-// function getFilteredInfluencersList(req, res) {
-  // UserModel.findById(req.params.id)
-  //   .then((response) => {
-  //     let userInfluencers = response.influencers
-  //     .then(() => {
-  //       let allInfluencers = getAllInfluencers()
-  //         .then(() => {
-  //           res.json(userInfluencers.filter(e => allInfluencers.includes(e)))
-  //         })
-  //         .catch((err) => handdleError(err, res))
-  //     })
-  //     .catch((err) => handdleError(err, res))
-  //   })
-  //   .catch((err) => handdleError(err, res))
-  // }
+
+
+function getFilteredInfluencersList(req, res) {
+  console.log('DENTROOO')
+  console.log(req.params.id)
+  UserModel.findById(req.params.id)
+    .populate('influencers')
+    .then((response) => {
+
+      let userInfluencers = response.influencers
+      getAllInfluencersList()
+        .then((allInfluencers) => {
+          console.log({allInfluencers})
+          let userInfluencersIDs = response.influencers.map(influencer => influencer._id)
+          let filterInfluencers = allInfluencers.filter(e => !userInfluencersIDs.includes(e._id))
+          res.json(filterInfluencers)
+        })
+        .catch((err) => handdleError(err, res))
+    })
+    .catch(err => res.json(err))
+}
 
 
 

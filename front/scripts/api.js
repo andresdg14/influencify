@@ -85,6 +85,21 @@ const API = {
       });
   },
 
+  getFilteredInfluencersList: function () {
+    return api
+      .get(`users/${localStorage.getItem("id")}/influencerslist`, {
+        headers: {
+          token: localStorage.getItem("token")
+        }
+      })
+      .then(function (response) {
+        return response.data
+      })
+      .catch(function (error) {
+        console.log(error.response);
+      });
+  },
+
   followInfluencerByUserId: function (influencerId) {
     return api
       .post(`users/${localStorage.getItem("id")}/follow/${influencerId}`, {}, {
