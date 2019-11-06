@@ -1,0 +1,103 @@
+h2 {
+  font-size: 1.4rem;
+}
+
+#mycoupons>h2,
+#myinfluencers>h2 {
+  color: #13c1ac;
+  margin-bottom: 20px;
+}
+
+.offer-img {
+  max-width: 80px;
+  margin: auto;
+}
+
+.offer-box {
+  border: 1px solid #e7e7e7;
+  border-radius: 10px;
+  box-shadow: 0px 3px 3px rgba(50, 50, 50, 0.15);
+  justify-content: space-between;
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-bottom: 5px;
+}
+
+.offer-box-left {
+  border-right: solid 1px #e7e7e7;
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.offer-box-right {
+  padding: 10px 15px 10px 15px;
+}
+
+.offer-box-right>.row {
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.get-button {
+  background-color: #13c1ac;
+  border-radius: 0px 10px 10px 0;
+}
+
+.get-button>a {
+  color: white;
+  font-weight: bold;
+}
+
+.get-button>button {
+  padding: 0;
+  background-color: transparent;
+  border-color: transparent;
+  height: 100%;
+  width: 100%;
+}
+
+.get-button>button:hover {
+  color: #fff;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+#logout-btn {
+  color: #fff;
+  background-color: #13c1ac !important;
+  border-color: #13c1ac !important;
+}
+
+#logout-btn>a {
+  color: white;
+  text-decoration: none;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 720px;
+  }
+
+  .profile-img {
+    max-width: 80px;
+    margin: auto;
+  }
+
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+

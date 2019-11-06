@@ -29,3 +29,45 @@
 h2 {
   font-size: 1.3em;
 }
+
+#logout-btn {
+  color: white;
+  background-color: #13c1ac !important;
+  border-color: #13c1ac !important;
+}
+
+#logout-btn>a {
+  color: white;
+  text-decoration: none;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 720px;
+  }
+
+  .profile-img {
+    max-width: 80px;
+    margin: auto;
+  }
+
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
