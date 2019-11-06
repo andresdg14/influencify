@@ -24,13 +24,14 @@ document.addEventListener("DOMContentLoaded", function () {
   API.getMyInfluencers()
     .then(influencers => {
       var ih = document.getElementById('myinfluencer')
-      influencers.forEach(elem => {
+
+      influencers.reverse().slice(0,5).forEach(elem => {
         var div = document.createElement('div');
         div.innerHTML = `
-<div class="col-3">        
+<div class="col-3 d-flex align-content-center flex-wrap">        
   <img src="${elem.profileImg}" class="profile-img rounded-circle">
 </div>
-<div class="col-9 d-flex flex-column align-items-start">
+<div class="col-7 d-flex flex-column align-items-start">
   <div class="row">
     <h2>${elem.name}</h2>
   </div>
@@ -64,13 +65,46 @@ document.addEventListener("DOMContentLoaded", function () {
       var offersMerged = [].concat.apply([], offers);
       var mo = document.getElementById('mycoupon')
       offersMerged.forEach(elem => {
-        console.log(elem.name);
+        console.log(elem);
         var div = document.createElement('div');
-        div.innerHTML = `<p>${elem.name}</p>`
-        var hr = document.createElement('hr')
-        div.className = "row";
+        div.innerHTML = `
+        <div class="col-3 d-flex align-content-center flex-wrap offer-box-left">
+          <img src="${elem.business.businessImg}" class="offer-img">
+        </div>
+        <div class="col-7 d-flex flex-column align-items-start offer-box-right">
+          <div class="row">
+            <h2>${elem.name}</h2>
+          </div>
+          <div class="row">
+            <span>${elem.description}</span>
+          </div>
+        </div>
+        <div class="col-2 d-flex align-content-center flex-wrap get-button">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Get</button>
+          <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="mySmallModalLabel">${elem.name}</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <h4>CODE</h4>
+                  <span class="input-group-text" style="text-align: center; margin-bottom: 15px;">${elem.offerCode}</span>
+                  <h4>URL</h4>
+                  <a href="${elem.offerURL}">${elem.offerURL}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        `
+        // var hr = document.createElement('hr')
+        div.className = "row offer-box";
         mo.appendChild(div)
-        mo.appendChild(hr)
+        // mo.appendChild(hr)
         });
       })
       .catch(function (error) {

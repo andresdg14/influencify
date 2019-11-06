@@ -19,10 +19,10 @@ const offerSchema = new mongoose.Schema({
     type: String,
   },
 
-  business: [{
+  business: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'business',
-  }],
+  },
 
   influencer: {
     type: mongoose.Schema.Types.ObjectId,
