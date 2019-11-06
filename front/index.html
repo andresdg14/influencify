@@ -12,60 +12,69 @@
 
   <div id="content">
 
-    <img src="img/logo-white500x120.png" alt="Infleuncify Logo" class="img-fluid">
+    <img src="img/logo-white500x120.png" alt="Infleuncify Logo" class="img-fluid mx-auto d-block">
 
 
   <!-- Authentication -->
-  <div id="auth">
-    <nav>
-      <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a href="#nav-register" class="nav-item nav-link active" id="nav-register-tab" data-toggle="tab" role="tab" aria-controls="nav-register" aria-selected="true">Register</a>
-        <a href="#nav-login" class="nav-item nav-link" id="nav-login-tab" data-toggle="tab" role="tab" aria-controls="nav-login" aria-selected="false">Login</a>
+  <div id="auth" class="container mt-5 pt-5">
+    <div class="card mx-auto border-0">
+      <div class="card-header border-bottom-0 bg-transparent">
+        <ul class="nav nav-tabs justify-content-center pt-4" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active text-primary" id="pills-login-tab" data-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-primary" id="pills-register-tab" data-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register" aria-selected="false">Register</a>
+          </li>
+        </ul>
       </div>
-    </nav>
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
 
-        <div id="register">
+      <div class="card-body pb-4">
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
+            
+              <div class="form-group">
+                <input type="text" name="login_email" class="form-control" id="login_email" placeholder="Email" required autofocus>
+              </div>
 
-          <div class="field">
-            <input type="text" id="user_name" name="user_name" required autofocus>
-            <label for="user_name">Name:</label>
-          </div>
-  
-          <div class="field">
-            <input type="text" id="user_username" name="user_username" required>
-            <label for="user_username">Username:</label>
-          </div>
-  
-          <div class="field">
-            <input type="text" id="user_email" name="user_email" required>
-            <label for="user_email">Email:</label>
+              <div class="form-group">
+                <input type="password" name="login_password" class="form-control" id="login_password" id="password" placeholder="Password" required>
+              </div>
+
+              <div class="text-center pt-4">
+                <button id="btn-login" class="btn btn-primary">Login</button>
+              </div>
+
           </div>
 
-          <div class="field">
-            <input type="password" id="user_password" name="user_password" required>
-            <label for="user_password">Password:</label>
+          <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="pills-register-tab">
+            
+              <div class="form-group">
+                <input type="text" name="user_name" id="user_name" class="form-control" placeholder="Name" required autofocus>
+              </div>
+
+              <div class="form-group">
+                <input type="text" name="user_username" id="user_username" class="form-control" placeholder="Username" required>
+              </div>
+
+              <div class="form-group">
+                <input type="text" name="user_email" id="user_email" class="form-control" placeholder="Email" required>
+              </div>
+
+              <div class="form-group">
+                <input type="password" name="user_password" id="user_password" class="form-control" placeholder="Set a password" required>
+              </div>
+
+              <div class="text-center pt-2 pb-1">
+                <button id="btn-signup" class="btn btn-primary">Register</button>
+              </div>
+            
           </div>
-  
-          <button id="btn-signup">SIGN-UP</button>
-        </div>
-      </div>
-      
-      <div class="tab-pane fade" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
-        <div id="login">
-          <label for="login_email">Email:</label>
-          <input type="text" id="login_email" name="login_email">
-    
-          <label for="login_password">Password:</label>
-          <input type="password" id="login_password" name="login_password">
-    
-          <button id="btn-login">LOGIN</button>
         </div>
       </div>
     </div>
   </div>
- 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
   <script src="scripts/jquery-3.3.1.slim.min.js"></script>

@@ -19,7 +19,9 @@ const API = {
       localStorage.setItem("name", response.data.name);
       localStorage.setItem("username", response.data.username);
       localStorage.setItem("email", response.data.email);
+      localStorage.setItem("profileImg", response.data.profileImg);
       localStorage.setItem("id", response.data._id);
+      authenticated()
     })
     .catch(function (error) {
       console.log(error.response);
@@ -35,6 +37,7 @@ const API = {
         localStorage.setItem("name", response.data.name);
         localStorage.setItem("username", response.data.username);
         localStorage.setItem("email", response.data.email);
+        localStorage.setItem("profileImg", response.data.profileImg);
         localStorage.setItem("id", response.data._id);
         console.log(response.data);
         authenticated()

@@ -80,8 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </div>
         <div class="col-2 d-flex align-content-center flex-wrap get-button">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Get</button>
-          <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".offer-${elem._id}">Get</button>
+          <div class="modal fade offer-${elem._id}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-sm">
               <div class="modal-content">
                 <div class="modal-header">
@@ -101,10 +101,8 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </div>
         `
-        // var hr = document.createElement('hr')
         div.className = "row offer-box";
         mo.appendChild(div)
-        // mo.appendChild(hr)
         });
       })
       .catch(function (error) {
@@ -148,8 +146,22 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(error.response);
     })
 
-  //Nombre del usuario logueado
-  const p = document.getElementById('username')
-  p.innerHTML = localStorage.getItem("username");
+  API.getCurrentUserById()
+    .then(user => {
+      var myprofile = document.getElementById('myprofile');
+      myprofile.innerHTML = `
+  <img src="${user.profileImg}" alt="avatar" id="profileimg" class="rounded-circle">
+  <p id="username">${user.username}</p>
+  `;
+
+    })
+    .catch((error) => console.log(error.response))
+
+  //Nombre e imagen del usuario logueado
+  // var myprofile = document.getElementById('myprofile');
+  // myprofile.innerHTML = `
+  // <img src="${localStorage.profileImg}" alt="avatar" id="profileimg" class="rounded-circle">
+  // <p id="username">${localStorage.username}</p>
+  // `;
   authenticated();
 });
