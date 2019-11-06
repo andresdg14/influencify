@@ -7,7 +7,6 @@ body {
   border-radius: 15px;
 }
 
-.nav-item .nav-link[disabled]:hover {}
 
 #content > img {
   margin-top: 50px;
