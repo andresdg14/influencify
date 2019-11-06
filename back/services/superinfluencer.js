@@ -1,7 +1,6 @@
 const InfluencerModel = require('../models/influencers.model')
 
 const superInfluencer = (req, res, next) => {
-  console.log('hola mundo')
   InfluencerModel
     .findOne({
       email: 'influencify@example.org'

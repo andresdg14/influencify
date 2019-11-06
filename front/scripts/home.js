@@ -65,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
       var offersMerged = [].concat.apply([], offers);
       var mo = document.getElementById('mycoupon')
       offersMerged.forEach(elem => {
-        console.log(elem);
         var div = document.createElement('div');
         div.innerHTML = `
         <div class="col-3 d-flex align-content-center flex-wrap offer-box-left">
@@ -157,11 +156,5 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((error) => console.log(error.response))
 
-  //Nombre e imagen del usuario logueado
-  // var myprofile = document.getElementById('myprofile');
-  // myprofile.innerHTML = `
-  // <img src="${localStorage.profileImg}" alt="avatar" id="profileimg" class="rounded-circle">
-  // <p id="username">${localStorage.username}</p>
-  // `;
   authenticated();
 });
